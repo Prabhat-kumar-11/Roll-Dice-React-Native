@@ -5,7 +5,7 @@ export default function App() {
   return (
     <View>
       <Text>App</Text>
-    </View>
+<Text>hello world</Text>    </View>
   )
 }
 
