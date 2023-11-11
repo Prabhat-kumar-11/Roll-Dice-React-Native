@@ -6,6 +6,8 @@ export default function App() {
     <View>
       <Text>App</Text>
       <Text>ready for new project</Text>
+<Text>hello world</Text> Text>App</Text>
+      <Text>ready for new project</Text>
 <Text>hello world</Text>    </View>
   )
 }
