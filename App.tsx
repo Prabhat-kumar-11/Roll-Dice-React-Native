@@ -5,6 +5,7 @@ export default function App() {
   return (
     <View>
       <Text>App</Text>
+      <Text>ready for new project</Text>
 <Text>hello world</Text>    </View>
   )
 }
