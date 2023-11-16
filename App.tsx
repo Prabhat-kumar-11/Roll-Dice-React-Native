@@ -1,15 +1,92 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  Image,
+  ImageSourcePropType,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {PropsWithChildren, useState} from 'react';
 
-export default function App() {
+import DiceOne from './src/assets/One.png';
+import DiceTwo from './src/assets/Two.png';
+import DiceThree from './src/assets/Three.png';
+import DiceFour from './src/assets/Four.png';
+import DiceFive from './src/assets/Five.png';
+import DiceSix from './src/assets/Six.png';
+
+type DiceProps = PropsWithChildren<{imageUrl: ImageSourcePropType}>;
+
+const Dice = ({imageUrl}: DiceProps): JSX.Element => {
   return (
     <View>
-      <Text>App</Text>
-      <Text>ready for new project</Text>
-<Text>hello world</Text> Text>App</Text>
-      <Text>ready for new project</Text>
-<Text>hello world</Text>    </View>
-  )
+      <Image style={styles.diceImage} source={imageUrl} />
+    </View>
+  );
+};
+
+export default function App(): JSX.Element {
+  const [diceImage, setDiceImage] = useState<ImageSourcePropType>(DiceOne);
+  const rollDiceonTap = () => {
+    let randomNumber = Math.floor(Math.random() * 6) + 1;
+
+    switch (randomNumber) {
+      case 1:
+        setDiceImage(DiceOne);
+        break;
+      case 2:
+        setDiceImage(DiceTwo);
+        break;
+      case 3:
+        setDiceImage(DiceThree);
+        break;
+      case 4:
+        setDiceImage(DiceFour);
+        break;
+      case 5:
+        setDiceImage(DiceFive);
+        break;
+      case 6:
+        setDiceImage(DiceSix);
+        break;
+      default:
+        setDiceImage(DiceOne);
+        break;
+    }
+  };
+  return (
+    <View style={styles.container}>
+      <Dice imageUrl={diceImage} />
+      <Pressable onPress={rollDiceonTap}>
+        <Text style={styles.rollDiceBtnText}>Roll the dice</Text>
+      </Pressable>
+    </View>
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#4eb8bc',
+  },
+  diceContainer: {
+    margin: 12,
+  },
+  diceImage: {
+    width: 200,
+    height: 200,
+  },
+  rollDiceBtnText: {
+    paddingVertical: 10,
+    paddingHorizontal: 40,
+    borderWidth: 2,
+    borderRadius: 8,
+    borderColor: '#d8db3a',
+    fontSize: 16,
+    color: 'green',
+    fontWeight: '700',
+    textTransform: 'uppercase',
+  },
+});
